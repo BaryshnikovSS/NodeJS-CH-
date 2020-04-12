@@ -1,0 +1,11 @@
+[{
+    "title": "Java Script",
+    "price": "489",
+    "img": "http://pluspng.com/img-png/logo-javascript-png-other-resolutions-240-240-pixels-240.png",
+    "id": "ba3d3c48-df31-4820-befe-663bf9f98ddf"
+}, {
+    "id": "504b0ce7-8cf9-438e-805b-63a99cfb6597",
+    "title": "Angular 8",
+    "price": "340",
+    "img": "https://www.zuehlke.com/blog/app/uploads/2013/04/angularjs.jpg"
+}]
