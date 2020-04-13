@@ -1,10 +1,13 @@
+const mongooos = require('mongoose');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
-const homeRoutes = require('./routs/home');
-const coursesRoutes = require('./routs/courses');
-const addRoutes = require('./routs/add');
-const cartRoutes = require('./routs/cart');
+const homeRoutes = require('./routes/home');
+const coursesRoutes = require('./routes/courses');
+const addRoutes = require('./routes/add');
+const cartRoutes = require('./routes/cart');
+
+require('dotenv').config();
 
 const app = express();
 
@@ -26,4 +29,15 @@ app.use('/cart', cartRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(3000, () => console.log(`Server is runing on port ${PORT}`));
+async function start() {
+    try{
+        await mongooos.connect(process.env.MONGODB_URL, {useUnifiedTopology: true, useNewUrlParser: true});
+        app.listen(PORT, () => console.log(`Server is runing on port ${PORT}`));
+    } catch(err) {
+        console.log(err);
+    }
+    
+}
+
+start();
+
