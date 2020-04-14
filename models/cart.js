@@ -7,7 +7,7 @@ class Cart {
     static async add(course) {
         const cart = await Cart.fetch();
 
-        const idx = cart.courses.findIndex(c => c.id === course.id);
+        const idx = cart.courses.findIndex(c => c._id == course._id);
         const candidate = cart.courses[idx];
 
         if(candidate) {
@@ -16,8 +16,9 @@ class Cart {
             cart.courses[idx] = candidate;
         } else {
             // needs add course
-            course.count = 1;
-            cart.courses.push(course);
+            const currentCourse = course;
+            currentCourse.count = 1;
+            cart.courses.push(currentCourse);
         }
 
         cart.price += +course.price;
@@ -43,12 +44,12 @@ class Cart {
     static async remove(id) {
         const cart = await Cart.fetch();
 
-        const idx = cart.courses.findIndex(c => c.id === id);
+        const idx = cart.courses.findIndex(c => c._id == id);
         const course = cart.courses[idx];
 
         if(course.count === 1) {
             // delete
-            cart.courses = cart.courses.filter(c => c.id !== id);
+            cart.courses = cart.courses.filter(c => c._id != id);
         } else {
             // change quantity
             cart.courses[idx].count--;

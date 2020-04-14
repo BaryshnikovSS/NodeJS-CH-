@@ -1,5 +1,5 @@
 <h1>Edit {{course.title}}</h1>
-<form class="col s12" action="/courses/edit" method="POST">
+<form class="col s12 course-form" action="/courses/edit" method="POST">
     <div class="row">
         <div class="input-field col s4">
             <input placeholder="corse name" id="title" name="title" type="text" class="validate" required value="{{course.title}}">
@@ -21,6 +21,10 @@
             <span class="helper-text" data-error="Load IMG" data-success="right">IMG</span>
         </div>
     </div>
-    <input type="hidden" name="id" value="{{course.id}}">
-    <button class="btn btn-primary">Edit course</button>
+    <input type="hidden" name="id" value="{{course._id}}">
+    <button type="submit" class="btn btn-primary">Edit course</button>
+</form>
+<form action="/courses/remove" method="POST">
+    <input type="hidden" name="id" value="{{course._id}}">
+    <button class="btn red">Delete course</button>
 </form>
